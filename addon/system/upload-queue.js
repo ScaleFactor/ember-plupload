@@ -79,7 +79,7 @@ export default Ember.ArrayProxy.extend({
   runtimeDidChange() {
     let $input = get(this, 'target').$('.moxie-shim input');
     let ruid = $input.attr('id');
-    let I = mOxie.Runtime.getInfo(ruid);
+    let I = moxie.runtime.Runtime.getInfo(ruid);
 
     // Polyfill mobile support
     if (!I.can('summon_file_dialog')) {
