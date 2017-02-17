@@ -34,7 +34,8 @@
     "ember-resolver": "^2.0.3",
     "ember-inline-svg": "0.1.4",
     "ember-try": "^0.1.2",
-    "loader.js": "^4.0.0"
+    "loader.js": "^4.0.0",
+    "plupload": "git+ssh@bitbucket.org:scalefactor/pluploader.git#master"
   },
   "description": "An uploader component for Ember apps",
   "keywords": [
