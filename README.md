@@ -358,7 +358,7 @@ export default Ember.Route.extend({
 
 # Installation
 
-* `ember install ember-plupload`
+* `ember install https://github.com/ScaleFactor/ember-plupload`
 
 ## Running
 
