@@ -1,5 +1,5 @@
 {
-  "name": "ember-plupload",
+  "name": "@scalefactor/ember-plupload",
   "version": "1.13.18",
   "directories": {
     "doc": "doc",
