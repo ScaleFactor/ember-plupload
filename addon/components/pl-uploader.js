@@ -179,8 +179,8 @@ export default Ember.Component.extend({
 
   teardownDragListeners: Ember.on('willDestroyElement', function () {
     var dropzoneId = get(this, 'dropzone.id');
-    if (dropzoneId) {
-      var handlers = this.eventHandlers;
+    var handlers = this.eventHandlers;
+    if (dropzoneId && handlers) {
       keys(handlers).forEach(function (key) {
         Ember.$(document).off(key, '#' + dropzoneId, handlers[key]);
       });
