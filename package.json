@@ -18,7 +18,6 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
-    "dinosheets": "^0.1.0",
     "ember-cli": "2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-dependency-checker": "^1.2.0",
@@ -35,8 +34,7 @@
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.1.2",
-    "loader.js": "^4.0.0",
-    "plupload": "https://github.com/ScaleFactor/pluploader.git#master"
+    "loader.js": "^4.0.0"
   },
   "description": "An uploader component for Ember apps",
   "keywords": [
@@ -44,7 +42,9 @@
     "file-upload"
   ],
   "dependencies": {
+    "dinosheets": "^0.1.0",
     "ember-cli-babel": "^5.1.5",
+    "plupload": "https://github.com/ScaleFactor/pluploader.git#master",
     "rsvp": "^3.0.17"
   },
   "ember-addon": {
