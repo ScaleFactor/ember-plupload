@@ -147,7 +147,11 @@ export default Ember.ArrayProxy.extend({
       let only_safe_chars_regex = /[^a-zA-Z0-9_.-]/g;
       let multiple_underscores_regex = /[_]{2,}/g;
       let cleaned_name = file.get('name').replace(only_safe_chars_regex, '_').replace(multiple_underscores_regex, '_');
-      file.set('name', cleaned_name);
+      console.log(file.get('name'));
+      set(file, 'name', cleaned_name);
+      // file.name =  cleaned_name;
+      console.log(file.get('name'));
+      console.log(get(this, 'name'));
 
       this.pushObject(file);
       get(this, 'target').sendAction('onfileadd', file, {
