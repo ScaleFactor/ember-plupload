@@ -1,6 +1,6 @@
 {
   "name": "@scalefactor/ember-plupload",
-  "version": "1.13.18",
+  "version": "1.13.19",
   "directories": {
     "doc": "doc",
     "test": "tests"
