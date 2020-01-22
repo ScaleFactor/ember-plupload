@@ -142,7 +142,7 @@ export default Ember.ArrayProxy.extend({
   	for (let i = 0; i < files.length; i++) {
     	let file = files[i];
       let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
-      rebuiltFiles.push(new File([file], cleanedName, { type: file.type } ));
+      rebuiltFiles.push(new window.File([file], cleanedName, { type: file.type } ));
   	}
 
 
