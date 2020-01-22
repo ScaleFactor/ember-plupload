@@ -16,19 +16,19 @@ module.exports = {
 
     if (!process.env.EMBER_CLI_FASTBOOT) {
       if (debugMode) {
-        app.import('bower_components/plupload/js/moxie.js');
-        app.import('bower_components/plupload/js/plupload.dev.js');
+        app.import('node_modules/plupload/js/moxie.js');
+        app.import('node_modules/plupload/js/plupload.dev.js');
       } else {
-        app.import('bower_components/plupload/js/plupload.full.min.js');
+        app.import('node_modules/plupload/js/plupload.full.min.js');
       }
     }
-    app.import('bower_components/plupload/js/Moxie.swf', {
+    app.import('node_modules/plupload/js/Moxie.swf', {
       destDir: 'assets'
     });
-    app.import('bower_components/plupload/js/Moxie.xap', {
+    app.import('node_modules/plupload/js/Moxie.xap', {
       destDir: 'assets'
     });
-    app.import('bower_components/dinosheets/dist/dinosheets.amd.js', {
+    app.import('node_modules/dinosheets/dist/dinosheets.amd.js', {
       exports: {
         'dinosheets': ['default']
       }
