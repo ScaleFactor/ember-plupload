@@ -146,7 +146,7 @@ export default Ember.ArrayProxy.extend({
       rebuiltFiles.push(new window.File([file], cleanedName, { type: file.type } ));
     }
 
-    console.log(rebuildFiles);
+    console.log(rebuiltFiles);
 
     for (let i = 0, len = rebuiltFiles.length; i < len; i++) {
       let rebuiltFile = rebuiltFiles[i];
