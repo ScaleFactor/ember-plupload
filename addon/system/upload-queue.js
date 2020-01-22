@@ -136,22 +136,25 @@ export default Ember.ArrayProxy.extend({
 
   filesAdded(uploader, files) {
     for (let i = 0, len = files.length; i < len; i++) {
+    	let rawFile = files[i];
+    	let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
+      let multipleUnderscoreRegex = /[_]{2,}/g;
+      let cleanedName = rawFile.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
+      // console.log(file.get('name'));
+      // set(file, 'name', cleanedName);
+      rawFile.name = cleanedName;
+      // console.log(file.get('name'));
+      // console.log(get(this, 'name'));
+
       var file = File.create({
         uploader: uploader,
-        file: files[i],
+        file: rawFile,
         queue: this
       });
 
       // Added in to handle weird characters blocked by AWS S3
       // This was caused by commas, but want to be proactive against potential issues
-      let only_safe_chars_regex = /[^a-zA-Z0-9_.-]/g;
-      let multiple_underscores_regex = /[_]{2,}/g;
-      let cleaned_name = file.get('name').replace(only_safe_chars_regex, '_').replace(multiple_underscores_regex, '_');
-      console.log(file.get('name'));
-      set(file, 'name', cleaned_name);
-      // file.name =  cleaned_name;
-      console.log(file.get('name'));
-      console.log(get(this, 'name'));
+      
 
       this.pushObject(file);
       get(this, 'target').sendAction('onfileadd', file, {
