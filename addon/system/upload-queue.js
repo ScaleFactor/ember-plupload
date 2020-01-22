@@ -135,37 +135,37 @@ export default Ember.ArrayProxy.extend({
   }),
 
   filesAdded(uploader, files) {
-  	let rebuiltFiles = [];
-  	let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
+    console.log('in filesAdded');
+    let rebuiltFiles = [];
+    let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
     let multipleUnderscoreRegex = /[_]{2,}/g;
 
-  	for (let i = 0; i < files.length; i++) {
-    	let file = files[i];
+    for (let i = 0, len = files.length; i < len; i++) {
+      let file = files[i];
       let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
       rebuiltFiles.push(new window.File([file], cleanedName, { type: file.type } ));
-  	}
+    }
 
+    console.log(rebuildFiles);
 
     for (let i = 0, len = rebuiltFiles.length; i < len; i++) {
-    	// let rawFile = rebuiltFiles[i];
-    	// let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
-     //  let multipleUnderscoreRegex = /[_]{2,}/g;
-      // let cleanedName = rawFile.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
-      // console.log(file.get('name'));
-      // set(file, 'name', cleanedName);
-      // rawFile.name = cleanedName;
-      // console.log(file.get('name'));
-      // console.log(get(this, 'name'));
+      let rebuiltFile = rebuiltFiles[i];
+      console.log(rebuiltFile);
 
-      var file = File.create({
+      let file = File.create({
         uploader: uploader,
-        file: rebuiltFiles[i],
+        file: rebuiltFile,
         queue: this
       });
 
+      console.log(file);
+      console.log(file.settings);
+
+      console.log(file.id);
+      console.log(this.findBy('id', file.id));
+
       // Added in to handle weird characters blocked by AWS S3
       // This was caused by commas, but want to be proactive against potential issues
-      
 
       this.pushObject(file);
       get(this, 'target').sendAction('onfileadd', file, {
@@ -192,6 +192,7 @@ export default Ember.ArrayProxy.extend({
   },
 
   configureUpload(uploader, file) {
+    console.log('inconfigureUpload', uploader);
     file = this.findBy('id', file.id);
     // Reset settings for merging
     uploader.settings = copy(get(this, 'settings'));
