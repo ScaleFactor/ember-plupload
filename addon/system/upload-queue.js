@@ -135,20 +135,31 @@ export default Ember.ArrayProxy.extend({
   }),
 
   filesAdded(uploader, files) {
-    for (let i = 0, len = files.length; i < len; i++) {
-    	let rawFile = files[i];
-    	let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
-      let multipleUnderscoreRegex = /[_]{2,}/g;
-      let cleanedName = rawFile.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
+  	let rebuiltFiles = [];
+  	let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
+    let multipleUnderscoreRegex = /[_]{2,}/g;
+
+  	for (let i = 0, len = files.length; i < len; i++) {
+    	let file = files[i];
+      let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
+      rebuiltFiles.push(new File([file], cleanedName, { type: file.type } ));
+  	end
+
+
+    for (let i = 0, len = rebuiltFiles.length; i < len; i++) {
+    	// let rawFile = rebuiltFiles[i];
+    	// let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
+     //  let multipleUnderscoreRegex = /[_]{2,}/g;
+      // let cleanedName = rawFile.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
       // console.log(file.get('name'));
       // set(file, 'name', cleanedName);
-      rawFile.name = cleanedName;
+      // rawFile.name = cleanedName;
       // console.log(file.get('name'));
       // console.log(get(this, 'name'));
 
       var file = File.create({
         uploader: uploader,
-        file: rawFile,
+        file: rebuiltFiles[i],
         queue: this
       });
 
