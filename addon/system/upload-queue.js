@@ -139,11 +139,11 @@ export default Ember.ArrayProxy.extend({
   	let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
     let multipleUnderscoreRegex = /[_]{2,}/g;
 
-  	for (let i = 0, len = files.length; i < len; i++) {
+  	for (let i = 0; i < files.length; i++) {
     	let file = files[i];
       let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
       rebuiltFiles.push(new File([file], cleanedName, { type: file.type } ));
-  	end
+  	}
 
 
     for (let i = 0, len = rebuiltFiles.length; i < len; i++) {
