@@ -44,7 +44,7 @@
   "dependencies": {
     "dinosheets": "^0.1.0",
     "ember-cli-babel": "^5.1.5",
-    "plupload": "https://github.com/ScaleFactor/pluploader.git#d65224a9fc5828dc6d537e08e971d13dd6af5a96",
+    "plupload": "https://github.com/ScaleFactor/pluploader.git#818e044ab0d547bf95c19e70d4356fa0f8758b87",
     "rsvp": "^3.0.17"
   },
   "ember-addon": {
