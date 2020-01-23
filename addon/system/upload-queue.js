@@ -140,13 +140,18 @@ export default Ember.ArrayProxy.extend({
     let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
     let multipleUnderscoreRegex = /[_]{2,}/g;
 
+    console.log(files);
+    console.log(files[0]);
+    console.log(uploader.files);
+
     for (let i = 0, len = files.length; i < len; i++) {
+      console.log('file num', i, rebuiltFiles);
       let file = files[i];
       let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
       rebuiltFiles.push(new window.File([file], cleanedName, { type: file.type } ));
     }
 
-    console.log(rebuiltFiles);
+    console.log('rebuiltFiles', rebuiltFiles);
 
     for (let i = 0, len = rebuiltFiles.length; i < len; i++) {
       let rebuiltFile = rebuiltFiles[i];
@@ -158,9 +163,9 @@ export default Ember.ArrayProxy.extend({
         queue: this
       });
 
+      console.log('after create')
       console.log(file);
       console.log(file.settings);
-
       console.log(file.id);
       console.log(this.findBy('id', file.id));
 
