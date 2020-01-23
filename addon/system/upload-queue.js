@@ -135,27 +135,27 @@ export default Ember.ArrayProxy.extend({
   }),
 
   filesAdded(uploader, files) {
-    console.log('in filesAdded');
-    let rebuiltFiles = [];
-    let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
-    let multipleUnderscoreRegex = /[_]{2,}/g;
+    // console.log('in filesAdded');
+    // let rebuiltFiles = [];
+    // let onlySafeCharsRegex = /[^a-zA-Z0-9_.-]/g;
+    // let multipleUnderscoreRegex = /[_]{2,}/g;
 
-    console.log(files);
-    console.log(files[0]);
-    console.log(uploader.files);
+    // console.log(files);
+    // console.log(files[0]);
+    // console.log(uploader.files);
+
+    // for (let i = 0, len = files.length; i < len; i++) {
+    //   console.log('file num', i, rebuiltFiles);
+    //   let file = files[i];
+    //   let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
+    //   rebuiltFiles.push(new window.File([file], cleanedName, { type: file.type } ));
+    // }
+
+    // console.log('rebuiltFiles', rebuiltFiles);
 
     for (let i = 0, len = files.length; i < len; i++) {
-      console.log('file num', i, rebuiltFiles);
-      let file = files[i];
-      let cleanedName = file.name.replace(onlySafeCharsRegex, '_').replace(multipleUnderscoreRegex, '_');
-      rebuiltFiles.push(new window.File([file], cleanedName, { type: file.type } ));
-    }
-
-    console.log('rebuiltFiles', rebuiltFiles);
-
-    for (let i = 0, len = rebuiltFiles.length; i < len; i++) {
-      let rebuiltFile = rebuiltFiles[i];
-      console.log(rebuiltFile);
+      let rebuiltFile = files[i];
+      // console.log(rebuiltFile);
 
       let file = File.create({
         uploader: uploader,
@@ -163,11 +163,11 @@ export default Ember.ArrayProxy.extend({
         queue: this
       });
 
-      console.log('after create')
-      console.log(file);
-      console.log(file.settings);
-      console.log(file.id);
-      console.log(this.findBy('id', file.id));
+      // console.log('after create')
+      // console.log(file);
+      // console.log(file.settings);
+      // console.log(file.id);
+      // console.log(this.findBy('id', file.id));
 
       // Added in to handle weird characters blocked by AWS S3
       // This was caused by commas, but want to be proactive against potential issues
